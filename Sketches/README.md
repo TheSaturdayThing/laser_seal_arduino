@@ -1,2 +1,2 @@
-+ Arduino code (sketches)
-* photocell
+Arduino code (sketches)
++ photocell
