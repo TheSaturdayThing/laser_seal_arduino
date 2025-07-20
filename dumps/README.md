@@ -8,7 +8,7 @@ https://github.com/avrdudes/avrdude
 
 The Arduino IDE uses **avrdude** to program the Arduino, but can also be used to read the binary code stored on it.
 
-https://forum.arduino.cc/t/downloading-existing-code/872624
+[https://forum.arduino.cc/t/downloading-existing-code/872624](https://forum.arduino.cc/t/downloading-existing-code/872624/12)
 
 For the Arduino Mega, the code was read by running:
 
