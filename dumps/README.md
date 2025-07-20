@@ -1,6 +1,6 @@
 The **readfile.hex** file is from the Arduino Mega2560 in the Laser Seal.
 By saving a copy, we can use it to restore the code to the Mega if it ever gets corrupted.
-We can also attempt to reverse-engineer the code as a last resort using [ghidra](https://github.com/NationalSecurityAgency/ghidra) or [IDA Pro](https://en.wikipedia.org/wiki/Interactive_Disassembler)
+We can also attempt to reverse-engineer the code as a last resort using [ghidra](https://en.wikipedia.org/wiki/Ghidra) or [IDA Pro](https://en.wikipedia.org/wiki/Interactive_Disassembler)
 
 **avrdude** (AVR Downloader UploaDE) is a program for downloading and uploading the on-chip memories of Microchip’s AVR microcontrollers. It can program the Flash and EEPROM, and where supported by the programming protocol, it can program fuse and lock bits. AVRDUDE also supplies a direct instruction mode allowing one to issue any programming instruction to the AVR chip regardless of whether AVRDUDE implements that specific feature of a particular chip.
 
