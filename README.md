@@ -3,6 +3,7 @@
    * Sketches (arduino programs)
    * Libraries (providing extra functionality for use in sketches)
    * Help Guides
+   * Laser cutter files (used to manufacture the seal)
 ## If you haven't used Git and GitHub before, you may find these guides helpful:
    * https://guides.github.com/
 ## Working with files in this Git repository can be done 
