@@ -1,14 +1,10 @@
 The Laser Seal uses an Arduino to contol a [SparkFun MP3 Player Shield](https://www.sparkfun.com/sparkfun-mp3-player-shield.html).  
 This board utilizes the VS1053B MP3 audio decoder IC to decode audio files
 
-The [Arduino vs1053 Library](https://github.com/mpflaga/Arduino_Library-vs1053_for_SdFat) explains how the board is set up.
+Support for the current v1.03.00 libraries is on [github.io](https://mpflaga.github.io/Arduino_Library-vs1053_for_SdFat/index.html) and explains how the board is set up.
 
-Original driver files can be found on [Github](https://github.com/mpflaga/Arduino_Library-vs1053_for_SdFat)
+This was migrated from the now closed v1.02.15 page on [github.com](https://mpflaga.github.io/Sparkfun-MP3-Player-Shield-Arduino-Library)
 
-See this reference where .plg files were converted to .053 format
-
-https://mpflaga.github.io/Sparkfun-MP3-Player-Shield-Arduino-Library/
-
-https://www.vlsi.fi/en/support/software/vs10xxpatches.html
+Documentation on the VS1053 chip can be found on the manufacturer's [website](https://www.vlsi.fi/en/products/vs1053.html)
 
 
