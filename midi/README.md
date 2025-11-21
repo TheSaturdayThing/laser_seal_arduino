@@ -9,4 +9,6 @@ This was migrated from the now closed v1.02.15 page on [github.com](https://mpfl
 
 Documentation on the VS1053 chip can be found on the manufacturer's [website](https://www.vlsi.fi/en/products/vs1053.html)
 
-
+TODO:
+- Does the current Mega take into account that the Arduino Uno uses digital pins 11 (MOSI), 12 (MISO), and 13 (SCK) for hardware SPI, while the Arduino Mega uses 51 (MOSI), 50 (MISO), and 52 (SCK). 
+- Both boards have a separate pin for slave select (SS), which is pin 10 on the Uno and pin 53 on the Mega.
