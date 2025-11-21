@@ -5,7 +5,7 @@ The current implementation does *NOT* use the VS1053 to play MP3 files, but inst
 - GPIO0 is LOW (grounded through 100K resistor on shield)
 - GPIO1 is HIGH (driven by pin D4 of shield)
   
-Once activated, the VS1053 can receive MIDI data through the UART (at a 31250 bps MIDI baud rate) or via the SPI bus, allowing it to function as a synthesizer without needing to load a MIDI file.
+Once activated, the VS1053 can receive MIDI data through the UART (at a 31250 bps MIDI baud rate) or via the SPI bus, allowing it to function as a synthesizer without needing to load a MIDI file. An explanation of MIDI messaging is [here](https://learn.sparkfun.com/tutorials/midi-tutorial/all)
 
 Support for the current v1.03.00 libraries is on [github.io](https://mpflaga.github.io/Arduino_Library-vs1053_for_SdFat/index.html) and explains how the board is set up.
 
