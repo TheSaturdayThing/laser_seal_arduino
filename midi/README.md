@@ -1,4 +1,4 @@
-The Laser Seal uses an Arduino to contol a [SparkFun MP3 Player Shield](https://www.sparkfun.com/sparkfun-mp3-player-shield.html).  
+The Laser Seal uses an Arduino to control a [SparkFun MP3 Player Shield](https://www.sparkfun.com/sparkfun-mp3-player-shield.html).  
 This board utilizes the VS1053B MP3 audio decoder IC to decode audio files
 
 Support for the current v1.03.00 libraries is on [github.io](https://mpflaga.github.io/Arduino_Library-vs1053_for_SdFat/index.html) and explains how the board is set up.
