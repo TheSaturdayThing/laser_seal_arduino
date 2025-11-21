@@ -1,5 +1,11 @@
 The Laser Seal uses an Arduino to control a [SparkFun MP3 Player Shield](https://www.sparkfun.com/sparkfun-mp3-player-shield.html).  
-This board utilizes the VS1053B MP3 audio decoder IC to decode audio files
+This board utilizes the VS1053 MP3 audio decoder IC to decode audio files.
+
+The current implementation does *NOT* use the VS1053 to play MP3 files, but instead it is set to real-time MIDI by activating the "Real-Time MIDI mode":
+- GPIO0 is LOW
+- GPIO1 is HIGH
+  
+Once activated, the VS1053 can receive MIDI data through the UART (at a 31250 bps MIDI baud rate) or via the SPI bus, allowing it to function as a synthesizer without needing to load a MIDI file.
 
 Support for the current v1.03.00 libraries is on [github.io](https://mpflaga.github.io/Arduino_Library-vs1053_for_SdFat/index.html) and explains how the board is set up.
 
