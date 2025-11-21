@@ -9,7 +9,7 @@ Once activated, the VS1053 can receive MIDI data through the UART (at a 31250 bp
 
 Real-time MIDI data is transmitted as a series of messages, each starting with a status byte indicating the message type, followed by one or two data bytes containing specific information like note, velocity, or channel. Key real-time messages include System Real-Time messages for synchronization (e.g., Start, Stop, Timing Clock), which have status bytes but no data bytes. Other common real-time data includes standard messages like Note On/Off, which include a status byte for the message and channel, and data bytes for note number and velocity. 
 
-The current laser seal uses a MIDI [instrument](https://fmslogo.sourceforge.io/manual/midi-instrument.html) code of '**12: Chromatic Percussion/ Marimba**' and follows a 17-note pentatonic scale:  
+The current laser seal uses a MIDI [instrument](https://fmslogo.sourceforge.io/manual/midi-instrument.html) code of '**12: Chromatic Percussion/ Marimba**' on the default channel 0 and follows a 17-note pentatonic scale with a velocity of 60 (medium loudness):  
 PENTA_NOTES[NUM_STRINGS] = {24, 26, 28, 31, 33, 36, 38, 40, 43, 45, 48, 50, 52, 55, 57, 60, 62};  
 (see [here](https://inspiredacoustics.com/en/MIDI_note_numbers_and_center_frequencies))
 
