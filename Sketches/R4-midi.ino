@@ -51,7 +51,7 @@ proverbial keyboard. Large vibrations (e.g. hammer smashes) will still trigger t
 SoftwareSerial mySerial(2, 3);  //RX pin defaults to input, TX pin set to output
 
 const int resetMIDI = 4; //Chip reset be driven by Arduino
-const int ledPin = 13;   //Drive as MIDI traffic inidicator
+const int ledPin = 13;   //Drive LED on Arduino board as MIDI traffic inidicator
 
 byte chanMsg_bankSelect = 0x00;
 byte chanMsg_noteOff = 0x80;
@@ -91,9 +91,10 @@ unsigned int signalOnTimes[NUM_STRINGS]; //Holds time at which each string was t
 
 const int minShadeTime = 10; //Minimum shade time for a note: 10 milliseconds.
 
-int instrument = 12; // Make this user selectable
-int channel = 0;
+int instrument = 12; // Piano: marimba. Make this user selectable
+int channel = 0;     // First channel
 int velocity = 60;
+int volume = 120;
 
 /* End options */
 
@@ -106,12 +107,12 @@ void setup() {
   //Begin MIDI Serial for MIDI control: chip requires 31,250
   mySerial.begin(31250);
   
-  //Terminate digital inputs
-  pinMode(2, INPUT_PULLUP); // Enable pullup since RX pin from shield to Arduino is not used
+  //Terminate digital inputs if not connected
+  pinMode(2, INPUT_PULLUP); //Enable pullup since RX pin from shield to Arduino is not used
 
-  // Loop through the array of pins and set them to INPUT_PULLUP
   for (int i = 0; i < NUM_STRINGS; i++) {
-    pinMode(STRING_PINS[i], INPUT_PULLUP);
+    pinMode(STRING_PINS[i], INPUT_PULLUP); //Loop to enable pullup on sensor pins
+
     Serial.print("Pin ");
     Serial.print(STRING_PINS[i]);
     Serial.println(" set to INPUT_PULLUP");
@@ -125,11 +126,7 @@ void setup() {
   Serial.println("MIDI reset");
   
   //Set channel volume, max is 127
-  talkMIDI(chanMsg_controlChange, channelVolume, 120);
-
-  for (int i = 0; i < NUM_STRINGS; i++) {
-    pinMode(STRING_PINS[i], INPUT);
-  }
+  talkMIDI(chanMsg_controlChange, channelVolume, volume);
   
   talkMIDI(chanMsg_program, instrument, channel); //Set instrument number.
 }
@@ -141,12 +138,12 @@ void loop() {
     stringVals[i] = digitalRead(STRING_PINS[i]);
   }
   
-  //Process readings:
+  //Process readings (play note when digital pin goes HIGH):
   for (int i = 0; i < NUM_STRINGS; i++) {
     if (stringVals[i] == HIGH && previouslyOn[i] == true) {
       if (millis() - signalOnTimes[i] >= minShadeTime) {
         if (noteIsOn[i] == false) {
-          noteOn(channel, PENTA_NOTES[i], velocity);
+          noteOn(channel, PENTA_NOTES[i], velocity); //Note plays when shaded (?check circuit design?)
           noteIsOn[i] = true;
         }
       }
