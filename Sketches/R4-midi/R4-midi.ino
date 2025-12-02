@@ -45,6 +45,9 @@ proverbial keyboard. Large vibrations (e.g. hammer smashes) will still trigger t
 */
 
 #include <SoftwareSerial.h>
+#include "Knob.h"
+#include "LCD.h"
+#include "Midi_db.h"
 
 /* Begin MIDI declarations */
 
@@ -91,6 +94,7 @@ unsigned int signalOnTimes[NUM_STRINGS]; //Holds time at which each string was t
 
 const int minShadeTime = 10; //Minimum shade time for a note: 10 milliseconds.
 
+int knob_read = 0;
 int instrument = 12; // Piano: marimba. Make this user selectable
 int channel = 0;     // First channel
 int velocity = 60;
@@ -101,8 +105,13 @@ int volume = 120;
 void setup() {
   //Begin Serial Monitor for debug: 
   Serial.begin(9600);
-  delay(2000);
   Serial.println("STARTING");
+ 
+  // Init knob on I2C
+  initKnob();
+  
+  // Init LCD display
+  initLCD();
 
   //Begin MIDI Serial for MIDI control: chip requires 31,250
   mySerial.begin(31250);
@@ -127,13 +136,20 @@ void setup() {
   
   //Set channel volume, max is 127
   talkMIDI(chanMsg_controlChange, channelVolume, volume);
-  
-  talkMIDI(chanMsg_program, instrument, channel); //Set instrument number.
 }
+/* End setup */
 
 void loop() {
+  //Read instrument value from knob and send to MIDI shield
   
-  //Take readings in this round:
+  instrument = readKnobPos(); //FIX ME: instrument change during scan causes multiple voices
+  Serial.println(instrument);
+  talkMIDI(chanMsg_program, instrument, channel); //Set instrument number.
+  
+  //Display MIDI info on LCD
+  displayMidi(instrument);
+
+  //Take sensor pin readings in this round:
   for (int i = 0; i < NUM_STRINGS; i++) {
     stringVals[i] = digitalRead(STRING_PINS[i]);
   }
@@ -160,7 +176,6 @@ void loop() {
     //When all is done, assign current values to past values:
     previouslyOn[i] = stringVals[i]; //Booleans typecast, T = 1, F = 0
   }
-  
 }
 
 // Functions are below
